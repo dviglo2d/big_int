@@ -21,7 +21,7 @@ using Digit = BigInt::Digit;
 // Тип удвоенной (double) длины. Умещает квадрат цифры
 using DDigit = uint64_t;
 
-/// Определяет, меньше ли первый модуль
+// Определяет, меньше ли первый модуль
 static bool first_is_less(const vector<Digit>& first, const vector<Digit>& second)
 {
     // Проверяем, что нет ведущих нулей
@@ -42,7 +42,7 @@ static bool first_is_less(const vector<Digit>& first, const vector<Digit>& secon
     return false; // first == second
 }
 
-/// Складывает модули чисел столбиком
+// Складывает модули чисел столбиком
 static vector<Digit> add_magnitudes(const vector<Digit>& a, const vector<Digit>& b)
 {
     // Выясняем, какой модуль длиннее
@@ -85,7 +85,7 @@ static vector<Digit> add_magnitudes(const vector<Digit>& a, const vector<Digit>&
     return ret;
 }
 
-/// Вычитает модули чисел столбиком. Уменьшаемое minuend должно быть >= вычитаемого subtrahend
+// Вычитает модули чисел столбиком. Уменьшаемое minuend должно быть >= вычитаемого subtrahend
 static vector<Digit> sub_magnitudes(const vector<Digit>& minuend, const vector<Digit>& subtrahend)
 {
     vector<Digit> ret;
@@ -132,8 +132,8 @@ static vector<Digit> sub_magnitudes(const vector<Digit>& minuend, const vector<D
     return ret;
 }
 
-/// Перемножает модули чисел столбиком.
-/// Смотрите "Умножение столбиком и смена base" в туторе
+// Перемножает модули чисел столбиком.
+// Смотрите "Умножение столбиком и смена base" в туторе
 static vector<Digit> mul_magnitudes(const vector<Digit>& a, const vector<Digit>& b)
 {
     vector<Digit> ret;
@@ -164,8 +164,8 @@ static vector<Digit> mul_magnitudes(const vector<Digit>& a, const vector<Digit>&
     return ret;
 }
 
-/// Без угадываний делит модуль длинного числа на цифру (столбиком).
-/// Если знаменатель == 0, возвращает {0, 0}
+// Без угадываний делит модуль длинного числа на цифру (столбиком).
+// Если знаменатель == 0, возвращает {0, 0}
 static pair<vector<Digit>, vector<Digit>> div_by_digit(const vector<Digit>& numerator, Digit denominator)
 {
     // Если числитель или знаменатель == 0
@@ -211,7 +211,7 @@ static pair<vector<Digit>, vector<Digit>> div_by_digit(const vector<Digit>& nume
 }
 
 #ifndef NDEBUG
-/// Отбрасывает младший разряд
+// Отбрасывает младший разряд
 static vector<Digit> div_by_base(const vector<Digit>& magnitude)
 {
     if (magnitude.size() == 1) // Модуль < base
@@ -222,9 +222,9 @@ static vector<Digit> div_by_base(const vector<Digit>& magnitude)
 }
 #endif
 
-/// Делит кусок числителя на знаменатель.
-/// Кусок и знаменатель таковы, что в результате всегда одна цифра.
-/// К тому же аргументы должны быть нормализованы (старшая цифра знаменателя >= base / 2)
+// Делит кусок числителя на знаменатель.
+// Кусок и знаменатель таковы, что в результате всегда одна цифра.
+// К тому же аргументы должны быть нормализованы (старшая цифра знаменателя >= base / 2)
 static Digit div_chunk(const vector<Digit>& chunk, const vector<Digit>& denominator)
 {
     if (first_is_less(chunk, denominator))
@@ -291,8 +291,8 @@ static Digit div_chunk(const vector<Digit>& chunk, const vector<Digit>& denomina
     return (Digit)digit;
 }
 
-/// Возвращает неполное частное и остаток (делит столбиком).
-/// Если знаменатель == 0, возвращает {0, 0}
+// Возвращает неполное частное и остаток (делит столбиком).
+// Если знаменатель == 0, возвращает {0, 0}
 static pair<vector<Digit>, vector<Digit>> div_mod_magnitudes(const vector<Digit>& numerator, const vector<Digit>& denominator)
 {
     // Если в знаменателе одна цифра
@@ -367,7 +367,7 @@ static pair<vector<Digit>, vector<Digit>> div_mod_magnitudes(const vector<Digit>
     return {quotient, chunk}; // В chunk находится остаток
 }
 
-/// Генерирует случайное число из диапазона [min, max] (включительно)
+// Генерирует случайное число из диапазона [min, max] (включительно)
 uint32_t generate_random(uint32_t min, uint32_t max)
 {
     // Используем random_device только для генерации seed, так как он медленный
@@ -436,7 +436,7 @@ BigInt::BigInt(uint32_t value)
         magnitude_.push_back(0);
 }
 
-/// Обходит undefined behavior в std::abs()
+// Обходит undefined behavior в std::abs()
 static uint64_t fixed_abs(int64_t value)
 {
     static_assert(is_same_v<int64_t, decltype(-9223372036854775807 - 1)>
