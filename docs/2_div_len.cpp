@@ -103,7 +103,7 @@ bool is_zero(const vector<Digit>& number)
 }
 
 // Определяет длину неполного частного
-size_t cal_quotient(const vector<Digit>& numerator, const vector<Digit>& denominator)
+size_t calc_quotient(const vector<Digit>& numerator, const vector<Digit>& denominator)
 {
     if (is_zero(denominator))
         return 1; // Пусть при делении на 0 результатом будет 0 (длина = 1)
@@ -135,7 +135,7 @@ size_t cal_quotient(const vector<Digit>& numerator, const vector<Digit>& denomin
 // Печатает два длинных числа и длину неполного частного
 void show(const vector<Digit>& a, const vector<Digit>& b)
 {
-    cout << to_string(a) << " / " << to_string(b) << " | result length = " << cal_quotient(a, b) << endl;
+    cout << to_string(a) << " / " << to_string(b) << " | result length = " << calc_quotient(a, b) << endl;
 }
 
 int main()
