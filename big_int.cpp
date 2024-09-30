@@ -15,7 +15,6 @@ namespace dviglo
 {
 
 constexpr uint32_t base = BigInt::base;
-constexpr uint32_t chunk_length = BigInt::chunk_length;
 using Digit = BigInt::Digit;
 
 // Тип удвоенной (double) длины. Умещает квадрат цифры
