@@ -368,7 +368,7 @@ static pair<vector<Digit>, vector<Digit>> div_mod_magnitudes(const vector<Digit>
 }
 
 // Генерирует случайное число из диапазона [min, max] (включительно)
-uint32_t generate_random(uint32_t min, uint32_t max)
+static uint32_t generate_random(uint32_t min, uint32_t max)
 {
     // Используем random_device только для генерации seed, так как он медленный
     static random_device device;
