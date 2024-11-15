@@ -56,7 +56,7 @@ else() # GCC, Clang или MinGW
 endif()
 
 # Заставляем VS отображать дерево каталогов
-source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${source_files})
+source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR}/lib FILES ${source_files})
 
 # ============================================== Тестер ==============================================
 
@@ -90,7 +90,7 @@ if(DV_BIG_INT_BUILD_TESTER)
     endif()
 
     # Заставляем VS отображать дерево каталогов
-    source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${source_files})
+    source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR}/tester FILES ${source_files})
 
     # Включаем тестирование
     enable_testing()
