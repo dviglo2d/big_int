@@ -26,11 +26,6 @@ if(MSVC)
     add_compile_options(/utf-8)
 endif()
 
-# Статически линкуем библиотеки, чтобы не копировать dll-ки
-if(MINGW)
-    add_link_options(-static)
-endif()
-
 # Включаем поддержку папок в IDE
 set_property(GLOBAL PROPERTY USE_FOLDERS ON)
 
@@ -56,8 +51,7 @@ else() # GCC, Clang или MinGW
 
     if(NOT MINGW AND DV_BIG_INT_UB_SANITIZER)
         target_compile_options(${target_name} PRIVATE -fsanitize=undefined)
-        # PUBLIC, чтобы не было ошибок при линковке к приложению без опции
-        target_link_options(${target_name} PUBLIC -fsanitize=undefined)
+        target_link_options(${target_name} INTERFACE -fsanitize=undefined)
     endif()
 endif()
 
@@ -88,6 +82,11 @@ if(DV_BIG_INT_BUILD_TESTER)
         if(NOT MINGW AND DV_BIG_INT_UB_SANITIZER)
             target_compile_options(${target_name} PRIVATE -fsanitize=undefined)
         endif()
+    endif()
+
+    # Статически линкуем библиотеки, чтобы не копировать dll-ки
+    if(MINGW)
+        target_link_options(${target_name} PRIVATE -static)
     endif()
 
     # Отладочная версия приложения будет иметь суффикс _d
