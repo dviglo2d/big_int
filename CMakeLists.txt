@@ -89,9 +89,6 @@ if(DV_BIG_INT_BUILD_TESTER)
         target_link_options(${target_name} PRIVATE -static)
     endif()
 
-    # Отладочная версия приложения будет иметь суффикс _d
-    set_property(TARGET ${target_name} PROPERTY DEBUG_POSTFIX _d)
-
     # Заставляем VS отображать дерево каталогов
     source_group(TREE ${CMAKE_CURRENT_SOURCE_DIR} FILES ${source_files})
 
